@@ -15,23 +15,21 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_learningmap/local/content/section/summary
-
-    Displays the course section summary.
+    @template format_learningmap/local/content/section/cmitem
 
     Example context (json):
     {
-        "summarytext": "Summary text!",
-        "warning": "Warning text!"
     }
 }}
-{{#summarytext}}
-    <div class="summarytext">
-        {{{summarytext}}}
-    </div>
-{{/summarytext}}
-{{#warning}}
-    <div class="warning">
-        {{{warning}}}
-    </div>
-{{/warning}}
+{{< core_courseformat/local/content/section/cmitem }}
+    {{!
+        Add any cm item blocks override here.
+    }}
+{{/ core_courseformat/local/content/section/cmitem }}
+{{#js}}
+    {{#islearningmap}}
+    require(['mod_learningmap/initmainlearningmap'], function(mainlearningmap) {
+        mainlearningmap.init({{id}}, {{isfirstlearningmap}});
+    });
+    {{/islearningmap}}
+{{/js}}

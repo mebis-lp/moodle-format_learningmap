@@ -37,37 +37,43 @@ use core\navigation\views\view;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class format_learningmap extends core_courseformat\base {
+    /** @var $mainlearningmap Main learningmap if already discovered. */
+    private cm_info|false|null $mainlearningmap = null;
+
     /**
      * Returns whether the first activity in the course is a learningmap.
      *
      * @return bool
      */
     public function main_learningmap_exists(): bool {
-        $modinfo = $this->get_modinfo();
-        if (empty($modinfo->cms)) {
-            return false;
+        if ($this->mainlearningmap !== null) {
+            return $this->mainlearningmap !== false;
         }
-        $firstactivity = reset($modinfo->cms);
-        return $firstactivity->modname === 'learningmap' && $firstactivity->uservisible;
+        $cms = $this->get_modinfo()->cms;
+        while (!empty($cms)) {
+            $activity = array_shift($cms);
+            if ($activity->modname == 'learningmap' && $activity->uservisible) {
+                $this->mainlearningmap = $activity;
+                return true;
+            }
+        }
+        $this->mainlearningmap = false;
+        return false;
     }
 
     /**
      * Returns the first learningmap activity in the course. Throws an exception if there is no learningmap, so you should
      * check with main_learningmap_exists() first.
      *
-     * @return cm_info|false
+     * @return cm_info
      * @throws moodle_exception
      */
     public function get_main_learningmap() {
-        $modinfo = $this->get_modinfo();
-        if (empty($modinfo->cms)) {
-            return false;
-        }
-        $firstactivity = reset($modinfo->cms);
-        if ($firstactivity->modname !== 'learningmap' || !$firstactivity->uservisible) {
+        if ($this->main_learningmap_exists()) {
+            return $this->mainlearningmap;
+        } else {
             throw new moodle_exception('nolearningmap', 'format_learningmap');
         }
-        return $firstactivity;
     }
 
     /**
@@ -168,9 +174,6 @@ class format_learningmap extends core_courseformat\base {
 
     /**
      * Allows course format to execute code on moodle_page::set_cm()
-     *
-     * If we are inside the main module for this course, remove extra node level
-     * from navigation: substitute course node with activity node, move all children
      *
      * @param moodle_page $page instance of page calling set_cm
      */
