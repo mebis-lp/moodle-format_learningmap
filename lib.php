@@ -156,18 +156,19 @@ class format_learningmap extends core_courseformat\base {
             $page->has_set_url() &&
             $page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE) &&
             !$this->show_editor()) {
-            $cm = $this->get_main_learningmap();
-            if (!$cm) {
-                if (has_capability('moodle/course:update', context_course::instance($this->courseid))) {
-                    // Display an error message to the trainer.
-                } else {
+            
+            
+            if (!$this->main_learningmap_exists()) {
+                if (!has_capability('moodle/course:update', context_course::instance($this->courseid))) {
                     return;
                 }
-            }
-            if (!$cm->uservisible) {
-                return;
             } else {
-                redirect($cm->url);
+                $cm = $this->get_main_learningmap();
+                if (!$cm->uservisible) {
+                    return;
+                } else {
+                    redirect($cm->url);
+                }
             }
         }
     }
