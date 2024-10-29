@@ -156,8 +156,6 @@ class format_learningmap extends core_courseformat\base {
             $page->has_set_url() &&
             $page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE) &&
             !$this->show_editor()) {
-            
-            
             if (!$this->main_learningmap_exists()) {
                 if (!has_capability('moodle/course:update', context_course::instance($this->courseid))) {
                     return;
