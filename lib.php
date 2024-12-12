@@ -177,9 +177,13 @@ class format_learningmap extends core_courseformat\base {
      * @param moodle_page $page instance of page calling set_cm
      */
     public function page_set_cm(moodle_page $page) {
+        global $PAGE;
+
         parent::page_set_cm($page);
 
-        $this->set_singleactivity_navigation($page);
+        if ($PAGE == $page && $PAGE->has_set_url()) {
+            $this->set_singleactivity_navigation($page);
+        }
     }
 
     /**

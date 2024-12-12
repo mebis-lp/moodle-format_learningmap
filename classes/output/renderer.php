@@ -16,6 +16,8 @@
 
 namespace format_learningmap\output;
 
+use core_course\output\activity_navigation;
+
 /**
  * Renderer for format_learningmap
  *
