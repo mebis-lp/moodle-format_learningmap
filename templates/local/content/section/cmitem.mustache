@@ -28,7 +28,7 @@
 {{/ core_courseformat/local/content/section/cmitem }}
 {{#js}}
     {{#islearningmap}}
-    require(['mod_learningmap/initmainlearningmap'], function(mainlearningmap) {
+    require(['format_learningmap/initmainlearningmap'], function(mainlearningmap) {
         mainlearningmap.init({{id}}, {{isfirstlearningmap}});
     });
     {{/islearningmap}}
