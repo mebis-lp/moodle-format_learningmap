@@ -158,7 +158,7 @@ class format_learningmap extends core_courseformat\base {
             !$this->show_editor()) {
             if (!$this->main_learningmap_exists()) {
                 if (!has_capability('moodle/course:update', context_course::instance($this->courseid))) {
-                    return;
+                    redirect(new moodle_url('/course/format/learningmap/error.php?courseid=' . $this->courseid));
                 }
             } else {
                 $cm = $this->get_main_learningmap();
