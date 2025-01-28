@@ -163,7 +163,7 @@ class format_learningmap extends core_courseformat\base {
             } else {
                 $cm = $this->get_main_learningmap();
                 if (!$cm->uservisible) {
-                    return;
+                    redirect(new moodle_url('/course/format/learningmap/error.php?courseid=' . $this->courseid));
                 } else {
                     redirect($cm->url);
                 }

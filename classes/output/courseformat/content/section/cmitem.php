@@ -16,8 +16,6 @@
 
 namespace format_learningmap\output\courseformat\content\section;
 
-use stdClass;
-
 /**
  * Class cmitem
  *

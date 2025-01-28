@@ -1,0 +1,7 @@
+body.format-learningmap #page-navbar {
+    display: none;
+}
+
+body.format-learningmap .activity-navigation {
+    display: none;
+}
