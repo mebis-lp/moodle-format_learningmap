@@ -1,4 +1,4 @@
-body.format-learningmap #page-navbar {
+body.format-learningmap:not(.editing) #page-navbar {
     display: none;
 }
 
