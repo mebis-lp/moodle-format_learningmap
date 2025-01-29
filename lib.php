@@ -77,12 +77,12 @@ class format_learningmap extends core_courseformat\base {
     }
 
     /**
-     * Returns true if currently in editing mode. Then course index is supported as well as drag and drop.
+     * Supports components.
      *
      * @return bool
      */
     public function supports_components() {
-        return $this->show_editor();
+        return true;
     }
 
     /**
@@ -187,16 +187,6 @@ class format_learningmap extends core_courseformat\base {
     }
 
     /**
-     * Sections can be removed from navigation if not in editing mode.
-     *
-     * @param cm_info $cm
-     * @return bool
-     */
-    public function can_sections_be_removed_from_navigation(): bool {    
-        return !$this->show_editor();
-    }
-
-    /**
      * Stealth modules are allowed here (but not necessary). This is set just for better compatibility with
      * courses that are converted from other formats.
      *
@@ -216,11 +206,35 @@ class format_learningmap extends core_courseformat\base {
      */
     public function get_section_name($section) {
         $section = $this->get_section($section);
-        if ($section->name !== '') {
+        if ($section->name !== '' && $section->name !== null) {
             return format_string($section->name, true);
         } else {
             return $this->get_default_section_name($section);
         }
+    }
+
+    /**
+     * Returns the default section name.
+     *
+     * @param stdClass $section
+     * @return string
+     */
+    public function get_default_section_name($section) {
+        if ($section->sectionnum == 0) {
+            return get_string('section0name', 'format_learningmap');
+        }
+
+        return get_string('newsection', 'format_learningmap');
+    }
+
+    /**
+     * Whether this format allows to delete sections.
+     *
+     * @param int|stdClass|section_info $section
+     * @return bool
+     */
+    public function can_delete_section($section) {
+        return true;
     }
 }
 

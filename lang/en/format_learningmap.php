@@ -27,11 +27,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['close'] = 'Close';
+$string['error_nolearningmap'] = 'This course is not ready yet.';
 $string['hidefromothers'] = 'hide';
 $string['mainlearningmap'] = 'Main learningmap';
+$string['newsection'] = 'New section';
 $string['nolearningmap'] = 'No learningmap in the course';
 $string['nolearningmapnotification'] = 'There is no learningmap in this course. This is no problem, if the course is just being built. It will be unaccessible for students until a learningmap is created.';
 $string['pluginname'] = 'Learningmap';
 $string['privacy:metadata'] = 'The Learningmap plugin doesn\'t store any personal data.';
+$string['section0name'] = 'General';
 $string['sectionname'] = 'Section';
 $string['showfromothers'] = 'show';
