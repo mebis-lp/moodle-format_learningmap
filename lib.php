@@ -257,3 +257,20 @@ function format_learningmap_inplace_editable($itemtype, $itemid, $newvalue) {
     }
 }
 
+/**
+ * Implements callback format_learningmap_coursemodule_definition_after_data() allowing to modify course module definition.
+ *
+ * @param moodleform_mod $moodleform
+ * @param MoodleQuickForm $form
+ * @return void
+ */
+function format_learningmap_coursemodule_definition_after_data($moodleform, $form) {
+    global $COURSE;
+    if ($COURSE->format === 'learningmap' && empty($moodleform->instance)) {
+        $current = $moodleform->get_current();
+        // Override default completion setting for learningmap format.
+        if ($current->completion == COMPLETION_DISABLED) {
+            $moodleform->set_data(['completion' => COMPLETION_TRACKING_MANUAL]);
+        }
+    }
+}
