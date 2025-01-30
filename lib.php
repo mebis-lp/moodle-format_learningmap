@@ -270,7 +270,7 @@ function format_learningmap_coursemodule_definition_after_data($moodleform, $for
         $current = $moodleform->get_current();
         // Override default completion setting for learningmap format.
         if ($current->completion == COMPLETION_DISABLED) {
-            $moodleform->set_data(['completion' => COMPLETION_TRACKING_MANUAL]);
+            $form->setDefault('completion', COMPLETION_TRACKING_MANUAL);
         }
     }
 }
