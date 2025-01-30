@@ -15,20 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for Learningmap
+ * Hook callbacks for Learningmap
  *
  * @package    format_learningmap
- * @copyright  2024-2025 ISB Bayern
+ * @copyright  2025 ISB Bayern
  * @author     Stefan Hanauska <stefan.hanauska@csg-in.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component    = 'format_learningmap';
-$plugin->release      = '0.1';
-$plugin->version      = 2025013000;
-$plugin->requires     = 2024042200;
-$plugin->supported    = [404, 500];
-$plugin->maturity     = MATURITY_ALPHA;
-$plugin->dependencies = ['mod_learningmap' => 2024121601];
+$callbacks = [
+    [
+        'hook' => core_course\hook\after_form_validation::class,
+        'callback' => \format_learningmap\local\hook_callbacks::class . '::check_course_activity_completion',
+    ],
+];

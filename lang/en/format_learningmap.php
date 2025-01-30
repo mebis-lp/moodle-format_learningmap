@@ -27,6 +27,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['close'] = 'Close';
+$string['completionrequired'] = 'Completion tracking needs to be enabled to use this course format';
 $string['error_nolearningmap'] = 'This course is not ready yet.';
 $string['hidefromothers'] = 'hide';
 $string['mainlearningmap'] = 'Main learningmap';

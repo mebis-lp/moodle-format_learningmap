@@ -14,21 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace format_learningmap\local;
+
 /**
- * Version information for Learningmap
+ * Hook callbacks for format_learningmap
  *
  * @package    format_learningmap
- * @copyright  2024-2025 ISB Bayern
- * @author     Stefan Hanauska <stefan.hanauska@csg-in.de>
+ * @copyright  2025 ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+class hook_callbacks {
 
-defined('MOODLE_INTERNAL') || die();
+    /**
+     * Allow plugins to extend a validation of the course editing form
+     *
+     * @param \core_course\hook\after_form_validation $hook
+     */
+    public static function check_course_activity_completion(\core_course\hook\after_form_validation $hook): void {
+        $data = $hook->get_data();
 
-$plugin->component    = 'format_learningmap';
-$plugin->release      = '0.1';
-$plugin->version      = 2025013000;
-$plugin->requires     = 2024042200;
-$plugin->supported    = [404, 500];
-$plugin->maturity     = MATURITY_ALPHA;
-$plugin->dependencies = ['mod_learningmap' => 2024121601];
+        if ($data['format'] === 'learningmap') {
+            if (empty($data['enablecompletion'])) {
+                $hook->add_errors(['enablecompletion' => get_string('completionrequired', 'format_learningmap')]);
+            }
+        }
+    }
+}
