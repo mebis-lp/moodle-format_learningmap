@@ -20,11 +20,16 @@ namespace format_learningmap\output\courseformat;
  * Class content
  *
  * @package    format_learningmap
- * @copyright  2024 ISB Bayern
- * @author Stefan Hanauska <stefan.hanauska@csg-in.de>
+ * @copyright  2024-2025 ISB Bayern
+ * @author     Stefan Hanauska <stefan.hanauska@csg-in.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class content extends \core_courseformat\output\local\content {
+    /**
+     * @var bool Learningmap format has also add section after each topic.
+     */
+    protected $hasaddsection = true;
+
     /**
      * Returns the output class template path.
      *

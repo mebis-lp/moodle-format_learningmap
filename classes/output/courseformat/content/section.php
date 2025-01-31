@@ -16,15 +16,43 @@
 
 namespace format_learningmap\output\courseformat\content;
 
+use renderer_base;
+use stdClass;
+
 /**
  * Class section
  *
  * @package    format_learningmap
- * @copyright  2024 ISB Bayern
- * @author Stefan Hanauska <stefan.hanauska@csg-in.de>
+ * @copyright  2024-2025 ISB Bayern
+ * @author     Stefan Hanauska <stefan.hanauska@csg-in.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class section extends \core_courseformat\output\local\content\section {
+    /** @var course_format the course format */
+    protected $format;
+
+    /**
+     * Export this data so it can be used as the context for a mustache template.
+     * This method is a copy from format_topics.
+     *
+     * @param renderer_base $output typically, the renderer that's calling this function
+     * @return stdClass data context for a mustache template
+     */
+    public function export_for_template(\renderer_base $output): stdClass {
+        $format = $this->format;
+
+        $data = parent::export_for_template($output);
+
+        if (!$this->format->get_sectionnum()) {
+            $addsectionclass = $format->get_output_classname('content\\addsection');
+            $addsection = new $addsectionclass($format);
+            $data->numsections = $addsection->export_for_template($output);
+            $data->insertafter = true;
+        }
+
+        return $data;
+    }
+
     /**
      * Returns the output class template path.
      *
@@ -33,4 +61,5 @@ class section extends \core_courseformat\output\local\content\section {
     public function get_template_name(\renderer_base $renderer): string {
         return 'format_learningmap/local/content/section';
     }
+    
 }
