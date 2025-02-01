@@ -1,0 +1,7 @@
+body.format-learningmap:not(.editing) #page-navbar {
+    display: none;
+}
+
+body.format-learningmap .activity-navigation {
+    display: none;
+}
