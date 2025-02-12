@@ -25,11 +25,12 @@ namespace format_learningmap\output\courseformat\content\section;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class cmitem extends \core_courseformat\output\local\content\section\cmitem {
-
     /**
      * Returns the output class template path.
      *
      * This method redirects the default template when the section activity item is rendered.
+     * @param renderer_base $output typically, the renderer that's calling this function
+     * @return string template path
      */
     public function get_template_name(\renderer_base $renderer): string {
         return 'format_learningmap/local/content/section/cmitem';

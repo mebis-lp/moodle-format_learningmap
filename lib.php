@@ -139,7 +139,7 @@ class format_learningmap extends core_courseformat\base {
             $secondarynav->add_node($coursehomenode);
         }
         $page->set_secondarynav($secondarynav);
-        $page->course->format = 'learningmap'; 
+        $page->course->format = 'learningmap';
     }
 
     /**
@@ -155,7 +155,8 @@ class format_learningmap extends core_courseformat\base {
             $PAGE == $page &&
             $page->has_set_url() &&
             $page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE) &&
-            !$this->show_editor()) {
+            !$this->show_editor()
+        ) {
             if (!$this->main_learningmap_exists()) {
                 if (!has_capability('moodle/course:update', context_course::instance($this->courseid))) {
                     redirect(new moodle_url('/course/format/learningmap/error.php?courseid=' . $this->courseid));
@@ -266,7 +267,9 @@ function format_learningmap_inplace_editable($itemtype, $itemid, $newvalue) {
     if ($itemtype === 'sectionname' || $itemtype === 'sectionnamenl') {
         $section = $DB->get_record_sql(
             'SELECT s.* FROM {course_sections} s JOIN {course} c ON s.course = c.id WHERE s.id = ?',
-            [$itemid], MUST_EXIST);
+            [$itemid],
+            MUST_EXIST
+        );
         return course_get_format($section->course)->inplace_editable_update_section_name($section, $itemtype, $newvalue);
     }
 }

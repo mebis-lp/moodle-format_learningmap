@@ -24,7 +24,6 @@ namespace format_learningmap\local;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class hook_callbacks {
-
     /**
      * Allow plugins to extend a validation of the course editing form
      *

@@ -34,6 +34,8 @@ class content extends \core_courseformat\output\local\content {
      * Returns the output class template path.
      *
      * This method redirects the default template when the course content is rendered.
+     * @param renderer_base $output typically, the renderer that's calling this function
+     * @return string template path
      */
     public function get_template_name(\renderer_base $renderer): string {
         return 'format_learningmap/local/content';
