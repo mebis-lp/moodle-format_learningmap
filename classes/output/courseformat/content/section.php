@@ -60,6 +60,5 @@ class section extends \core_courseformat\output\local\content\section {
      */
     public function get_template_name(\renderer_base $renderer): string {
         return 'format_learningmap/local/content/section';
-    }
-    
+    }    
 }

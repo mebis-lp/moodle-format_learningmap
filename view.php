@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe file view
+ * Empty view.php file for course format learningmap
  *
  * @package    format_learningmap
  * @copyright  2025 ISB Bayern
