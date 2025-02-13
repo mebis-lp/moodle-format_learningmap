@@ -38,6 +38,12 @@ $course = get_course($courseid);
 $PAGE->set_heading($course->fullname);
 echo $OUTPUT->header();
 
-echo $OUTPUT->render_from_template('format_learningmap/error', []);
+$format = course_get_format($COURSE);
+
+if ($format->main_learningmap_exists()) {
+    redirect($url);
+} else {
+    echo $OUTPUT->render_from_template('format_learningmap/error', []);
+}
 
 echo $OUTPUT->footer();
