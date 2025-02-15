@@ -31,4 +31,4 @@ $plugin->version      = 2025013000;
 $plugin->requires     = 2024042200;
 $plugin->supported    = [404, 500];
 $plugin->maturity     = MATURITY_ALPHA;
-$plugin->dependencies = ['mod_learningmap' => 2024121601];
+$plugin->dependencies = ['mod_learningmap' => 2025021501];
