@@ -19,12 +19,24 @@
 
     Example context (json):
     {
+        "cmformat": {
+            "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Activity example</span></a>",
+            "hasname": "true",
+            "moveicon": "<i>[Move]</i>",
+            "indent": 2,
+            "afterlink": "<span class=\"badge bg-primary\">30 unread messages</span>",
+            "hasextras": true,
+            "extras": ["<span class=\"badge bg-secondary\">[extras]</span>"],
+            "completion": "<span class=\"badge bg-success\">Completed!</span>"
+        },
+        "id": 3,
+        "anchor": "module-3",
+        "module": "forum",
+        "extraclasses": "newmessages",
+        "indent": 0
     }
 }}
 {{< core_courseformat/local/content/section/cmitem }}
-    {{!
-        Add any cm item blocks override here.
-    }}
 {{/ core_courseformat/local/content/section/cmitem }}
 {{#js}}
     {{#islearningmap}}

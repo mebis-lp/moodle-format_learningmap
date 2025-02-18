@@ -16,13 +16,74 @@
 }}
 {{!
     @template format_learningmap/local/content/section
+
+    Example context (json):
+    {
+        "num": 3,
+        "id": 35,
+        "controlmenu": "[tools menu]",
+        "header": {
+            "name": "Section title",
+            "title": "<a href=\"http://moodle/course/view.php?id=5#section-0\">Section title</a>",
+            "url": "#",
+            "ishidden": true,
+            "headinglevel": 3
+        },
+        "cmlist": {
+            "cms": [
+                {
+                    "cmitem": {
+                        "cmformat": {
+                            "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Forum example</span></a>",
+                            "hasname": "true"
+                        },
+                        "id": 3,
+                        "module": "forum",
+                        "anchor": "activity-3",
+                        "extraclasses": "newmessages"
+                    }
+                },
+                {
+                    "cmitem": {
+                        "cmformat": {
+                            "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Assign example</span></a>",
+                            "hasname": "true"
+                        },
+                        "id": 4,
+                        "anchor": "activity-4",
+                        "module": "assign",
+                        "extraclasses": ""
+                    }
+                }
+            ],
+            "hascms": true
+        },
+        "ishidden": false,
+        "iscurrent": true,
+        "currentlink": "<span class=\"accesshide\">This topic</span>",
+        "availability": {
+            "info": "<span class=\"badge bg-info\">Hidden from students</span>",
+            "hasavailability": true
+        },
+        "summary": {
+            "summarytext": "Summary text!"
+        },
+        "controlmenu": {
+            "menu": "<a href=\"#\" class=\"d-inline-block dropdown-toggle icon-no-margin\">Edit<b class=\"caret\"></b></a>",
+            "hasmenu": true
+        },
+        "cmcontrols": "[Add an activity or resource]",
+        "iscoursedisplaymultipage": true,
+        "sectionreturnid": 0,
+        "contentcollapsed": false,
+        "insertafter": true,
+        "numsections": 42,
+        "sitehome": false,
+        "highlightedlabel" : "Highlighted"
+    }
 }}
 {{< core_courseformat/local/content/section }}
-    {{!
-        Add any section blocks override here.
-    }}
     {{$ core_courseformat/local/content/section/cmitem }}
         {{> format_learningmap/local/content/section/cmitem }}
     {{/ core_courseformat/local/content/section/cmitem }}
 {{/ core_courseformat/local/content/section }}
-

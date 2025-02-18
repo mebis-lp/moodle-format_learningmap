@@ -16,13 +16,159 @@
 }}
 {{!
     @template format_learningmap/local/content
+
+    Example context (json):
+    {
+        "initialsection": {
+                "num": 0,
+                "id": 34,
+                "cmlist": {
+                    "cms": [
+                        {
+                            "cmitem": {
+                                "cmformat": {
+                                    "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Forum example</span></a>",
+                                    "hasname": "true"
+                                },
+                                "id": 3,
+                                "cmid": 3,
+                                "module": "forum",
+                                "extraclasses": "newmessages",
+                                "anchor": "module-3"
+                            }
+                        }
+                    ],
+                    "hascms": true
+                },
+                "iscurrent": true,
+                "summary": {
+                    "summarytext": "Summary text!"
+                }
+            },
+        "sections": [
+            {
+                "num": 1,
+                "id": 35,
+                "header": {
+                    "name": "Section title",
+                    "url": "#",
+                    "headinglevel": 3
+                },
+                "cmlist": {
+                    "cms": [
+                        {
+                            "cmitem": {
+                                "cmformat": {
+                                    "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Another forum</span></a>",
+                                    "hasname": "true"
+                                },
+                                "id": 4,
+                                "cmid": 4,
+                                "module": "forum",
+                                "extraclasses": "newmessages",
+                                "anchor": "module-4"
+                            }
+                        }
+                    ],
+                    "hascms": true
+                },
+                "iscurrent": true,
+                "summary": {
+                    "summarytext": "Summary text!"
+                }
+            },
+            {
+                "num": 4,
+                "id": 36,
+                "header": {
+                    "name": "Section 2 title",
+                    "url": "#",
+                    "headinglevel": 3
+                },
+                "cmlist": {
+                    "cms": [
+                        {
+                            "cmitem": {
+                                "cmformat": {
+                                    "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Forum example</span></a>",
+                                    "hasname": "true"
+                                },
+                                "id": 5,
+                                "cmid": 5,
+                                "module": "forum",
+                                "extraclasses": "newmessages",
+                                "anchor": "module-5"
+                            }
+                        }
+                    ],
+                    "hascms": true
+                },
+                "iscurrent": true,
+                "summary": {
+                    "summarytext": "Summary text!"
+                }
+            }
+        ],
+        "format": "topics",
+        "title": "Course title example",
+            "hasnavigation": true,
+            "sectionnavigation": {
+            "hasprevious": true,
+            "previousurl": "#",
+            "larrow": "&#x25C4;",
+            "previousname": "Section 3",
+            "hasnext": true,
+            "rarrow": "&#x25BA;",
+            "nexturl": "#",
+            "nextname": "Section 5"
+        },
+        "sectionselector": {
+            "hasprevious": true,
+            "previousurl": "#",
+            "larrow": "&#x25C4;",
+            "previousname": "Section 3",
+            "hasnext": true,
+            "rarrow": "&#x25BA;",
+            "nexturl": "#",
+            "nextname": "Section 5",
+            "selector": "<select><option>Section 4</option></select>"
+        },
+        "sectionreturn": 1,
+        "singlesection": {
+            "num": 5,
+            "id": 37,
+            "header": {
+                "name": "Single Section Example",
+                "url": "#",
+                "headinglevel": 3
+            },
+            "cmlist": {
+                "cms": [
+                    {
+                        "cmitem": {
+                            "cmformat": {
+                                "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Assign example</span></a>",
+                                "hasname": "true"
+                            },
+                            "id": 6,
+                            "cmid": 6,
+                            "module": "assign",
+                            "extraclasses": "",
+                            "anchor": "module-6"
+                        }
+                    }
+                ],
+                "hascms": true
+            },
+            "iscurrent": true,
+            "summary": {
+                "summarytext": "Summary text!"
+            }
+        }
+    }
 }}
 <div class="format_learningmap-notification">{{#nolearningmap}}{{> format_learningmap/notification }}{{/nolearningmap}}</div>
 {{< core_courseformat/local/content }}
-    {{!
-        Add any general structure blocks override here.
-    }}
-
     {{$ core_courseformat/local/content/section }}
         {{> format_learningmap/local/content/section }}
     {{/ core_courseformat/local/content/section }}
