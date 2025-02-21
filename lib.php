@@ -283,8 +283,8 @@ function format_learningmap_inplace_editable($itemtype, $itemid, $newvalue) {
  */
 function format_learningmap_coursemodule_definition_after_data($moodleform, $form) {
     global $COURSE;
-    if ($COURSE->format === 'learningmap' && empty($moodleform->instance)) {
-        $current = $moodleform->get_current();
+    $current = $moodleform->get_current();
+    if ($COURSE->format === 'learningmap' && empty($current->instance)) {        
         // Override default completion setting for learningmap format.
         if ($current->completion == COMPLETION_DISABLED) {
             $form->setDefault('completion', COMPLETION_TRACKING_MANUAL);
