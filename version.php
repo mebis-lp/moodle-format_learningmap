@@ -27,8 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component    = 'format_learningmap';
 $plugin->release      = '0.1';
-$plugin->version      = 2025022100;
+$plugin->version      = 2025022800;
 $plugin->requires     = 2024042200;
 $plugin->supported    = [404, 500];
-$plugin->maturity     = MATURITY_ALPHA;
+$plugin->maturity     = MATURITY_BETA;
 $plugin->dependencies = ['mod_learningmap' => 2025021501];
