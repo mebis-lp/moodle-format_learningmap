@@ -182,6 +182,14 @@ class format_learningmap extends core_courseformat\base {
 
         parent::page_set_cm($page);
 
+        $options = $this->get_format_options();
+        if (
+            !empty($options['hidesecondarynavforstudents']) &&
+            !has_capability('moodle/course:manageactivities', context_module::instance($page->cm->id))
+        ) {
+            $page->set_secondary_navigation(false);
+        }
+
         if ($PAGE == $page && $PAGE->has_set_url()) {
             $this->set_singleactivity_navigation($page);
         }
@@ -250,6 +258,24 @@ class format_learningmap extends core_courseformat\base {
         $ajaxsupport = new stdClass();
         $ajaxsupport->capable = true;
         return $ajaxsupport;
+    }
+
+    /**
+     * Defines the course format options.
+     *
+     * @param boolean $foreditform whether the options are for the course edit form
+     * @return array the list of options
+     */
+    public function course_format_options($foreditform = false) {
+        $options = parent::course_format_options($foreditform);
+        $options['hidesecondarynavforstudents'] = [
+            'label' => get_string('hidesecondarynavforstudents', 'format_learningmap'),
+            'type' => PARAM_BOOL,
+            'element_type' => 'advcheckbox',
+            'default' => 0,
+        ];
+
+        return $options;
     }
 }
 
