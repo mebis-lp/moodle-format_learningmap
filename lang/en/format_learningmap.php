@@ -30,6 +30,7 @@ $string['close'] = 'Close';
 $string['completionrequired'] = 'Completion tracking needs to be enabled to use this course format';
 $string['error_nolearningmap'] = 'This course is not ready yet.';
 $string['hidefromothers'] = 'hide';
+$string['hidesecondarynavforstudents'] = 'Hide secondary navigation for students';
 $string['mainlearningmap'] = 'Main learningmap';
 $string['newsection'] = 'New section';
 $string['nolearningmap'] = 'No learningmap in the course';
