@@ -270,10 +270,12 @@ class format_learningmap extends core_courseformat\base {
     public function course_format_options($foreditform = false) {
         $options = parent::course_format_options($foreditform);
         $options['hidesecondarynavforstudents'] = [
-            'label' => get_string('hidesecondarynavforstudents', 'format_learningmap'),
+            'label' => new \lang_string('hidesecondarynavforstudents', 'format_learningmap'),
             'type' => PARAM_BOOL,
             'element_type' => 'advcheckbox',
             'default' => 0,
+            'help' => 'hidesecondarynavforstudents',
+            'help_component' => 'format_learningmap',
         ];
 
         return $options;
