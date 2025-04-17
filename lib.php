@@ -185,7 +185,8 @@ class format_learningmap extends core_courseformat\base {
         $options = $this->get_format_options();
         if (
             !empty($options['hidesecondarynavforstudents']) &&
-            !has_capability('moodle/course:manageactivities', context_module::instance($page->cm->id))
+            !(has_capability('moodle/course:manageactivities', context_module::instance($page->cm->id)) ||
+              has_capability('moodle/course:manageactivities', context_course::instance($this->courseid)))
         ) {
             $page->set_secondary_navigation(false);
         }
